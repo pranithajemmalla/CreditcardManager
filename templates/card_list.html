@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of cards</title>
+    <style>
+        table {
+
+        align:center;
+         width: 90%;
+         margin-left:50px;
+        }
+        #logout,#w
+        {
+        color:blue;
+        }
+        th
+        {
+
+        align:center;
+           height: 70px;
+        color:DarkSlateBlue;
+         font-family: Verdana;
+         font-size:25px;
+
+        }
+        td
+        {
+        height:70px;
+        align:center;
+        color:IndianRed;
+        font-family: Verdana;
+         font-size:20px;
+        }
+        #a
+        {
+            align:center;
+             color:LightCoral;
+        }
+        #c
+        {
+        color:LightSlateGray;
+        }
+        #header
+        {
+        padding-top:20px;
+      background-color:PaleVioletRed ;
+        }
+
+        body
+        {
+        border: 20px solid blue;
+        margin:0px;
+        }
+        #border
+        {
+        background-color:white;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+<h1 id="w" align="right"> Welcome {{ user.username }}</h1>
+<h3 id="logout" align="right"><a href="{% url 'Creditcardapp:logout' %}">Logout</a></h3>
+</div>
+<div id="border">
+<h2 align="center" id="c">
+   List of Cards
+</h2>
+
+    <h4 id="a" align="center"><a href="{% url 'Creditcardapp:addcard' user.id %}">Create New Card</a></h4>
+    <table  border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <th>Id</th>
+            <th>Friendly Name</th>
+            <th>Name</th>
+            <th>Expiry Date</th>
+            <th>Type</th>
+            <th>CVV</th>
+            <th>Card_no</th>
+        </tr>
+        {% for res in cards %}
+        <tr>
+            <td>{{res.id}}</td>
+            <td>{{res.friendly_name}}</td>
+            <td>{{res.name_on_card}}</td>
+            <td>{{res.expiry_date}}</td>
+            <td>{{res.type}}</td>
+            <td>{{res.cvv}}</td>
+            <td>{{res.card_no}}</td>
+            <td><a href="{% url 'Creditcardapp:deletecard' res.id %}">delete</a></td>
+        <td><a href="{% url 'Creditcardapp:updatecard' res.id %}">edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

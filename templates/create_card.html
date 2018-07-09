@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new Card</title>
+</head>
+<body>
+ <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Add Card</legend>
+            {{form.as_p}}
+        </fieldset>
+        <input type="submit" value="Submit"/>
+    </form>
+
+</body>
+</html>

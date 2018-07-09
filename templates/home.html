@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+Hi {{ user.username }}!
+{{user.id}}
+{% endif %}
+<p><a>Logout</a></p>
+<p>Welcome</p>
+<button> <a href="{% url 'Creditcardapp:cardlist' %}">OK</a></button>
+</body>
+</html>
